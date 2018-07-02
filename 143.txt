@@ -1,0 +1,104 @@
+**For FreightTranDT
+
+Select  MainInitTran.*,  Box.BoxCode , ShipmentRoute.RouteCode , box.CBMPerBox , ShipmentRoute.RMinCharge ,
+( select count(*) from InitialTran  as childInitTran where  childInitTran.BoxNo= MainInitTran.BoxNo ) as TBCPerBoxGroup 
+From InitialTran as MainInitTran Left Join Box On MainInitTran.BoxNo = box.BoxNo 
+Left Join ShipmentRoute on MainInitTran.RouteNo = ShipmentRoute.RouteNo
+Where MainInitTran.FreightNo= '1' and box.BoxCode<>'' and ShipmentRoute.RouteCode<>'' and Exclude <> '1'
+
+
+
+
+InitialTranDS = ConDB.GetInitialTran(@"Select * FROM InitialTran  where InitialTran.FreightNo = '" + int.Parse(txtFreightNo.Text) + "'");
+
+
+
+
+Select  MainInitTran.FreightNo,   MainInitTran.itemno , MainInitTran.BoxNo , MainInitTran.LocationNo , 
+MainInitTran.RouteNo , box.CBMPerBox , 
+From InitialTran as MainInitTran Left Join Box On MainInitTran.BoxNo = box.BoxNo 
+Left Join ShipmentRoute on MainInitTran.RouteNo = ShipmentRoute.RouteNo
+Where MainInitTran.FreightNo= '1' and MainInitTran.BoxNo is not null  and MainInitTran.RouteNo is not null and Exclude <> '1'
+
+
+
+Select  InitialTran.FreightNo,   InitialTran.Itemno , InitialTran.BoxNo , InitialTran.LocationNo , 
+InitialTran.RouteNo , InitialTran.ItemQty   , Box.CBMPerBox , ShipmentRoute.RMinCharge 
+From InitialTran  Left Join Box On InitialTran.BoxNo = box.BoxNo 
+Left Join ShipmentRoute on InitialTran.RouteNo = ShipmentRoute.RouteNo
+Where InitialTran.FreightNo= '1' and InitialTran.BoxNo is not null  and InitialTran.RouteNo is not null and Exclude <> '1'
+
+
+
+
+
+
+Create PROCEDURE [dbo].[AddFreightTranDT]
+	@SeqNoDT numeric(18, 0),
+	@FreightNoDT numeric(18,0),
+	@ItemNo numeric(18, 0),
+	@BoxNo numeric(18, 0),
+	@LocationNo numeric(18, 0),
+	@RouteNo numeric(18, 0),
+	@CBMPerBoxDT	nvarchar(MAX),
+	@RMinChargeDT  numeric(18, 0),
+	@ItemQtyDT numeric(18, 0),
+	@CBMDT nvarchar(MAX),
+	@AmountDT numeric(18, 2)
+	
+AS
+	BEGIN
+	INSERT fre(InitTranNo, FreightNo,ItemCode,BoxNo,  LocationCode, RouteNo, Exclude ,ItemNo, LocationNo, ItemQty)
+	VALUES(@InitTranNo, @FreightNo,@ItemCode,@BoxNo,  @LocationCode, @RouteNo, @Exclude,@ItemNo, @LocationNo, @ItemQty)
+END
+
+
+
+
+
+
+SELECT count(DISTINCT BoxNo) 
+FROM FreightTranDT;
+
+
+
+SELECT *  , (SELECT count(DISTINCT BoxNo)  FROM FreightTranDT )as DistinctBoxCount
+FROM FreightTranDT
+
+
+SELECT TOP 1 FreightTranDT.BLengthDT ,  FreightTranDT.BWidthDT 
+FROM FreightTranDT
+where FreightTranDT.BoxNo = '5'
+
+
+
+
+SELECT   FreightTranHD.CreatedBy ,FreightTranHD.CreatedDate,  FreightTranDT.FreightNoDT, FreightTranDT.BoxNameDT, (SELECT CONCAT(FreightTranDT.BLengthDT , ' x ' ,FreightTranDT.BWidthDT ,' x ',FreightTranDT.BHeightDT ) )as BoxDim, FreightTranDT.CBMPerBoxDT,
+	(SELECT sum(t2.BoxQtyDT)  FROM FreightTranDT as t2 where   FreightTranDT.BoxNo = t2.BoxNo and  FreightTranDT.FreightNoDT = t2.FreightNoDT)as DistinctBoxQty,
+	(SELECT sum( Cast(t3.CBMDT as float))  FROM FreightTranDT as t3 where   FreightTranDT.BoxNo = t3.BoxNo and  FreightTranDT.FreightNoDT = t3.FreightNoDT)as DistinctCMBTotal,
+	(SELECT sum( Cast(t4.AmountDT as float))  FROM FreightTranDT as t4 where   FreightTranDT.BoxNo = t4.BoxNo and  FreightTranDT.FreightNoDT = t4.FreightNoDT)as DistinctAmountTotal,
+	ShipmentRoute.RMinCharge , Location.LocationName , FreightTranHD.Remarks
+FROM FreightTranDT 
+left join FreightTranHD on FreightTranDT.FreightNoDT = FreightTranHD.FreightNoHD 
+left join Location on FreightTranDT.LocationNo = Location.LocationNo 
+left join ShipmentRoute on FreightTranDT.RouteNo = ShipmentRoute.RouteNo 
+where FreightTranDT.FreightNoDT= '1'
+group by  FreightTranHD.CreatedBy ,FreightTranHD.CreatedDate,  FreightTranDT.FreightNoDT, FreightTranDT.BoxNo, FreightTranDT.BoxNameDT,  FreightTranDT.BLengthDT  ,  FreightTranDT.BWidthDT ,FreightTranDT.BHeightDT, FreightTranDT.CBMPerBoxDT , ShipmentRoute.RMinCharge , Location.LocationName  , FreightTranHD.Remarks
+
+
+
+
+
+
+**
+item qty to boxqty
+
+
+
+
+
+
+while closing form
+if btnBuild enable== true
+	prmopt. "you want to disregard current transaction?"
+	if yes clear initialtran.

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCBC2BF8-953F-432B-8213-811FB01A232F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FCS</RootNamespace>
+    <AssemblyName>FCS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>120_128.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="crvBoxReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="crvBoxReport.Designer.cs">
+      <DependentUpon>crvBoxReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cryBox.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryBox.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryInvoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cryShipmentRoute.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cryShipmentRoute.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="crySupplier.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crySupplier.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmAppSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppSetup.Designer.cs">
+      <DependentUpon>frmAppSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBoxReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBoxReport.Designer.cs">
+      <DependentUpon>frmBoxReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBoxSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBoxSearch.Designer.cs">
+      <DependentUpon>frmBoxSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="crvInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="crvInvoice.Designer.cs">
+      <DependentUpon>crvInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="crvShipmentRReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="crvShipmentRReport.Designer.cs">
+      <DependentUpon>crvShipmentRReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSRouteSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSRouteSearch.Designer.cs">
+      <DependentUpon>frmSRouteSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuppFreightReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuppFreightReport.Designer.cs">
+      <DependentUpon>frmSuppFreightReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="crvSupplierReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="crvSupplierReport.Designer.cs">
+      <DependentUpon>crvSupplierReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransac.Designer.cs">
+      <DependentUpon>frmTransac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUploadItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUploadItem.Designer.cs">
+      <DependentUpon>frmUploadItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapBox.cs" />
+    <Compile Include="MapInvoice.cs" />
+    <Compile Include="MapShipmentRoute.cs" />
+    <Compile Include="PublicRef.cs" />
+    <Compile Include="InsertSP.cs" />
+    <Compile Include="OtherClass\ConDB.cs" />
+    <Compile Include="frmBoxSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBoxSet.Designer.cs">
+      <DependentUpon>frmBoxSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItem.Designer.cs">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLocation.Designer.cs">
+      <DependentUpon>frmLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNew.Designer.cs">
+      <DependentUpon>frmNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShipmentRoute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShipmentRoute.Designer.cs">
+      <DependentUpon>frmShipmentRoute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserAccount.Designer.cs">
+      <DependentUpon>frmUserAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OtherClass\IncrementID.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveSP.cs" />
+    <Compile Include="frmSupplierSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSupplierSearch.Designer.cs">
+      <DependentUpon>frmSupplierSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShipmentRReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShipmentRReport.Designer.cs">
+      <DependentUpon>frmShipmentRReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapSupplier.cs" />
+    <Compile Include="UpdateSP.cs" />
+    <EmbeddedResource Include="crvBoxReport.resx">
+      <DependentUpon>crvBoxReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryBox.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryBox.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryInvoice.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cryShipmentRoute.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cryShipmentRoute.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crySupplier.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crySupplier.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAppSetup.resx">
+      <DependentUpon>frmAppSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBoxReport.resx">
+      <DependentUpon>frmBoxReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBoxSearch.resx">
+      <DependentUpon>frmBoxSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBoxSet.resx">
+      <DependentUpon>frmBoxSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crvInvoice.resx">
+      <DependentUpon>crvInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItem.resx">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLocation.resx">
+      <DependentUpon>frmLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNew.resx">
+      <DependentUpon>frmNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShipmentRoute.resx">
+      <DependentUpon>frmShipmentRoute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crvShipmentRReport.resx">
+      <DependentUpon>crvShipmentRReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSRouteSearch.resx">
+      <DependentUpon>frmSRouteSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuppFreightReport.resx">
+      <DependentUpon>frmSuppFreightReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crvSupplierReport.resx">
+      <DependentUpon>crvSupplierReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransac.resx">
+      <DependentUpon>frmTransac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUploadItem.resx">
+      <DependentUpon>frmUploadItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserAccount.resx">
+      <DependentUpon>frmUserAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="frmSupplierSearch.resx">
+      <DependentUpon>frmSupplierSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShipmentRReport.resx">
+      <DependentUpon>frmShipmentRReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="120_128.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="FCSDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="FCSDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CFS.Properties.Settings.GlobalReference.Default.FCSDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FreightTranDTTableAdapter" GeneratorDataComponentClassName="FreightTranDTTableAdapter" Name="FreightTranDT" UserDataComponentName="FreightTranDTTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="FCSDBConnectionString (Settings)" DbObjectName="FCSDB.dbo.FreightTranDT" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT    FreightTranDT.BoxNameDT, (SELECT CONCAT(FreightTranDT.BLengthDT , ' x ' ,FreightTranDT.BWidthDT ,' x ',FreightTranDT.BHeightDT ) )as BoxDim, FreightTranDT.CBMPerBoxDT,
+	(SELECT sum(t2.BoxQtyDT)  FROM FreightTranDT as t2 where   FreightTranDT.BoxNo = t2.BoxNo and  FreightTranDT.FreightNoDT = t2.FreightNoDT)as DistinctBoxQty,
+	(SELECT sum( Cast(t3.CBMDT as float))  FROM FreightTranDT as t3 where   FreightTranDT.BoxNo = t3.BoxNo and  FreightTranDT.FreightNoDT = t3.FreightNoDT)as DistinctCMBTotal,
+	(SELECT sum( Cast(t4.AmountDT as float))  FROM FreightTranDT as t4 where   FreightTranDT.BoxNo = t4.BoxNo and  FreightTranDT.FreightNoDT = t4.FreightNoDT)as DistinctAmountTotal
+FROM FreightTranDT
+where FreightTranDT.FreightNoDT= '1'
+group by   FreightTranDT.FreightNoDT, FreightTranDT.BoxNo, FreightTranDT.BoxNameDT,  FreightTranDT.BLengthDT  ,  FreightTranDT.BWidthDT ,FreightTranDT.BHeightDT, FreightTranDT.CBMPerBoxDT
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="BoxNameDT" DataSetColumn="BoxNameDT" />
+              <Mapping SourceColumn="BoxDim" DataSetColumn="BoxDim" />
+              <Mapping SourceColumn="CBMPerBoxDT" DataSetColumn="CBMPerBoxDT" />
+              <Mapping SourceColumn="DistinctBoxQty" DataSetColumn="DistinctBoxQty" />
+              <Mapping SourceColumn="DistinctCMBTotal" DataSetColumn="DistinctCMBTotal" />
+              <Mapping SourceColumn="DistinctAmountTotal" DataSetColumn="DistinctAmountTotal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FreightTranDT" msprop:Generator_TableClassName="FreightTranDTDataTable" msprop:Generator_TableVarName="tableFreightTranDT" msprop:Generator_TablePropName="FreightTranDT" msprop:Generator_RowDeletingName="FreightTranDTRowDeleting" msprop:Generator_RowChangingName="FreightTranDTRowChanging" msprop:Generator_RowEvHandlerName="FreightTranDTRowChangeEventHandler" msprop:Generator_RowDeletedName="FreightTranDTRowDeleted" msprop:Generator_UserTableName="FreightTranDT" msprop:Generator_RowChangedName="FreightTranDTRowChanged" msprop:Generator_RowEvArgName="FreightTranDTRowChangeEvent" msprop:Generator_RowClassName="FreightTranDTRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BoxNameDT" msprop:Generator_ColumnVarNameInTable="columnBoxNameDT" msprop:Generator_ColumnPropNameInRow="BoxNameDT" msprop:Generator_ColumnPropNameInTable="BoxNameDTColumn" msprop:Generator_UserColumnName="BoxNameDT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BoxDim" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnBoxDim" msprop:Generator_ColumnPropNameInRow="BoxDim" msprop:Generator_ColumnPropNameInTable="BoxDimColumn" msprop:Generator_UserColumnName="BoxDim" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="129" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CBMPerBoxDT" msprop:Generator_ColumnVarNameInTable="columnCBMPerBoxDT" msprop:Generator_ColumnPropNameInRow="CBMPerBoxDT" msprop:Generator_ColumnPropNameInTable="CBMPerBoxDTColumn" msprop:Generator_UserColumnName="CBMPerBoxDT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DistinctBoxQty" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDistinctBoxQty" msprop:Generator_ColumnPropNameInRow="DistinctBoxQty" msprop:Generator_ColumnPropNameInTable="DistinctBoxQtyColumn" msprop:Generator_UserColumnName="DistinctBoxQty" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DistinctCMBTotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDistinctCMBTotal" msprop:Generator_ColumnPropNameInRow="DistinctCMBTotal" msprop:Generator_ColumnPropNameInTable="DistinctCMBTotalColumn" msprop:Generator_UserColumnName="DistinctCMBTotal" type="xs:double" minOccurs="0" />
+              <xs:element name="DistinctAmountTotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDistinctAmountTotal" msprop:Generator_ColumnPropNameInRow="DistinctAmountTotal" msprop:Generator_ColumnPropNameInTable="DistinctAmountTotalColumn" msprop:Generator_UserColumnName="DistinctAmountTotal" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
